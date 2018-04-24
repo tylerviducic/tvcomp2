@@ -2,6 +2,22 @@ package com.TylerV;
 
 public class Numerov {
 
+    
+    
+    //integrate forward from x = 0 and backwards from xmax
+    //2 parts of the function must match with continuous first derivatives
+    //matching point is the inversion point xc where V=E
+    //xc -> V(xc) > E
+    //outward integration is done until xc yields psiL
+    //nodes are counted as before
+    //if number of nodes is the expected one, begin inward integration from xmax
+    //stop at xc yielding psiR
+    //Rescale psiR
+    //we require our solutions match at xc
+    //yR'-yL' = (yL(xc-1) + yR(xc+1) - [14 - 12*fi]*yi)/h
+    //if yR'-yL' > 0, move to lower half integral
+    //if yR' - yL' < 0, move to upper half interval
+    //continue until energy is within predetermined range
 
 
     public void numerov(double xmax, double n, int iterations){
@@ -12,6 +28,7 @@ public class Numerov {
         double energyRange;
         double nodes;
         boolean cont = true;
+       
 
         double[] yn = new double[iterations];
         double[] fn = new double[iterations];
